@@ -33,7 +33,7 @@ def nll(pars, data, pdf):
         >>> nll = pyhf.infer.mle.nll(parameters, data, model)
         >>> nll
         array([15.38762717])
-        >>> -1 * model.logpdf(parameters, data) == nll
+        >>> -model.logpdf(parameters, data) == nll
         array([ True])
 
     Args:
@@ -79,7 +79,7 @@ def fit(data, pdf, init_pars=None, par_bounds=None, fixed_params=None, **kwargs)
         array([0.        , 1.00305155, 0.96267465])
         >>> nll
         array(12.4919676)
-        >>> -1 * model.logpdf(bestfit_pars, data) == nll
+        >>> -model.logpdf(bestfit_pars, data) == nll
         array([ True])
 
     Args:
@@ -146,7 +146,7 @@ def fixed_poi_fit(
         array([1.        , 0.97226646, 0.87552889])
         >>> nll
         array(14.46109013)
-        >>> -1 * model.logpdf(bestfit_pars, data) == nll
+        >>> -model.logpdf(bestfit_pars, data) == nll
         array([ True])
 
     Args:
