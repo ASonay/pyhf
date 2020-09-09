@@ -43,17 +43,17 @@ def test_sbottom_regionA_1300_205_60(
     CLs_obs, CLs_exp = calculate_CLs(
         sbottom_regionA_bkgonly_json, sbottom_regionA_1300_205_60_patch_json
     )
-    assert CLs_obs == pytest.approx(0.24443627759085326, rel=1e-5)
+    assert CLs_obs == pytest.approx(0.2444418, rel=1e-5)
     assert np.all(
         np.isclose(
             np.array(CLs_exp),
             np.array(
                 [
-                    0.09022509053507759,
-                    0.1937839194960632,
-                    0.38432344933992,
-                    0.6557757334303531,
-                    0.8910420971601081,
+                    np.array(0.09023417),
+                    np.array(0.19379784),
+                    np.array(0.38434083),
+                    np.array(0.65579069),
+                    np.array(0.89104895),
                 ]
             ),
             rtol=1e-5,
@@ -73,17 +73,17 @@ def test_sbottom_regionA_1400_950_60(
     CLs_obs, CLs_exp = calculate_CLs(
         sbottom_regionA_bkgonly_json, sbottom_regionA_1400_950_60_patch_json
     )
-    assert CLs_obs == pytest.approx(0.021373283911064852, rel=1e-5)
+    assert CLs_obs == pytest.approx(0.0213732, rel=1e-5)
     assert np.all(
         np.isclose(
             np.array(CLs_exp),
             np.array(
                 [
-                    0.0026445531093281147,
-                    0.013976126501170727,
-                    0.06497105816950004,
-                    0.23644030478043676,
-                    0.5744785776763938,
+                    np.array(0.00264459),
+                    np.array(0.01397628),
+                    np.array(0.06497158),
+                    np.array(0.23644149),
+                    np.array(0.57448001),
                 ],
             ),
             rtol=1e-5,
@@ -103,17 +103,17 @@ def test_sbottom_regionA_1500_850_60(
     CLs_obs, CLs_exp = calculate_CLs(
         sbottom_regionA_bkgonly_json, sbottom_regionA_1500_850_60_patch_json
     )
-    assert CLs_obs == pytest.approx(0.045367205665400624, rel=1e-5)
+    assert CLs_obs == pytest.approx(0.04536628, rel=1e-5)
     assert np.all(
         np.isclose(
             np.array(CLs_exp),
             np.array(
                 [
-                    0.00598431785676406,
-                    0.026102240062850574,
-                    0.10093641492218848,
-                    0.31019245951964736,
-                    0.6553623337518385,
+                    np.array(0.00598365),
+                    np.array(0.02610002),
+                    np.array(0.10093043),
+                    np.array(0.31018133),
+                    np.array(0.65535131),
                 ]
             ),
             rtol=1e-5,
@@ -133,17 +133,17 @@ def test_sbottom_regionB_1400_550_60(
     CLs_obs, CLs_exp = calculate_CLs(
         sbottom_regionB_bkgonly_json, sbottom_regionB_1400_550_60_patch_json
     )
-    assert CLs_obs == pytest.approx(0.9744675266677597, rel=1e-5)
+    assert CLs_obs == pytest.approx(0.9944320, rel=1e-5)
     assert np.all(
         np.isclose(
             np.array(CLs_exp),
             np.array(
                 [
-                    0.9338879894557114,
-                    0.9569045303300702,
-                    0.9771296335437559,
-                    0.9916370124133669,
-                    0.9983701133999316,
+                    np.array(0.9939882),
+                    np.array(0.99613164),
+                    np.array(0.99797367),
+                    np.array(0.99926868),
+                    np.array(0.99985933),
                 ]
             ),
             rtol=1e-5,
@@ -169,11 +169,11 @@ def test_sbottom_regionC_1600_850_60(
             np.array(CLs_exp),
             np.array(
                 [
-                    0.2955492909588046,
-                    0.4446885457298284,
-                    0.6371473864200973,
-                    0.8336149623750603,
-                    0.9585901381554178,
+                    np.array(0.29555621),
+                    np.array(0.44469567),
+                    np.array(0.63715336),
+                    np.array(0.83361842),
+                    np.array(0.9585912),
                 ]
             ),
             rtol=1e-5,
