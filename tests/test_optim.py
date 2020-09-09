@@ -280,11 +280,11 @@ def test_optim(backend, source, spec, mu):
 
     optim = pyhf.optimizer
 
-    result = optim.minimize(pyhf.infer.mle.twice_nll, data, pdf, init_pars, par_bounds)
+    result = optim.minimize(pyhf.infer.mle.nll, data, pdf, init_pars, par_bounds)
     assert pyhf.tensorlib.tolist(result)
 
     result = optim.minimize(
-        pyhf.infer.mle.twice_nll,
+        pyhf.infer.mle.nll,
         data,
         pdf,
         init_pars,
@@ -304,11 +304,11 @@ def test_optim_with_value(backend, source, spec, mu):
 
     optim = pyhf.optimizer
 
-    result = optim.minimize(pyhf.infer.mle.twice_nll, data, pdf, init_pars, par_bounds)
+    result = optim.minimize(pyhf.infer.mle.nll, data, pdf, init_pars, par_bounds)
     assert pyhf.tensorlib.tolist(result)
 
     result, fitted_val = optim.minimize(
-        pyhf.infer.mle.twice_nll,
+        pyhf.infer.mle.nll,
         data,
         pdf,
         init_pars,
@@ -331,11 +331,11 @@ def test_optim_uncerts(backend, source, spec, mu):
 
     optim = pyhf.optimizer
 
-    result = optim.minimize(pyhf.infer.mle.twice_nll, data, pdf, init_pars, par_bounds)
+    result = optim.minimize(pyhf.infer.mle.nll, data, pdf, init_pars, par_bounds)
     assert pyhf.tensorlib.tolist(result)
 
     result = optim.minimize(
-        pyhf.infer.mle.twice_nll,
+        pyhf.infer.mle.nll,
         data,
         pdf,
         init_pars,
