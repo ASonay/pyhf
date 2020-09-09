@@ -50,7 +50,7 @@ def nll(pars, data, pdf):
 def fit(data, pdf, init_pars=None, par_bounds=None, fixed_params=None, **kwargs):
     r"""
     Run a maximum likelihood fit.
-    This is done by minimizing the objective function :func:`~pyhf.infer.mle.twice_nll`
+    This is done by minimizing the objective function :func:`~pyhf.infer.mle.nll`
     of the model parameters given the observed data.
     This is used to produce the maximal likelihood :math:`L\left(\hat{\mu}, \hat{\boldsymbol{\theta}}\right)`
     in the profile likelihood ratio in Equation (7) in :xref:`arXiv:1007.1727`
@@ -62,7 +62,7 @@ def fit(data, pdf, init_pars=None, par_bounds=None, fixed_params=None, **kwargs)
 
     .. note::
 
-        :func:`twice_nll` is the objective function given to the optimizer and
+        :func:`nll` is the objective function given to the optimizer and
         is returned evaluated at the best fit model parameters when the optional
         kwarg ``return_fitted_val`` is ``True``.
 
@@ -74,12 +74,12 @@ def fit(data, pdf, init_pars=None, par_bounds=None, fixed_params=None, **kwargs)
         ... )
         >>> observations = [51, 48]
         >>> data = pyhf.tensorlib.astensor(observations + model.config.auxdata)
-        >>> bestfit_pars, twice_nll = pyhf.infer.mle.fit(data, model, return_fitted_val=True)
+        >>> bestfit_pars, nll = pyhf.infer.mle.fit(data, model, return_fitted_val=True)
         >>> bestfit_pars
-        array([0.        , 1.0030512 , 0.96266961])
-        >>> twice_nll
-        array(24.98393521)
-        >>> -2 * model.logpdf(bestfit_pars, data) == twice_nll
+        array([0.        , 1.00305155, 0.96267465])
+        >>> nll
+        array(12.4919676)
+        >>> -1 * model.logpdf(bestfit_pars, data) == nll
         array([ True])
 
     Args:
@@ -106,9 +106,7 @@ def fit(data, pdf, init_pars=None, par_bounds=None, fixed_params=None, **kwargs)
         if is_fixed
     ]
 
-    return opt.minimize(
-        twice_nll, data, pdf, init_pars, par_bounds, fixed_vals, **kwargs
-    )
+    return opt.minimize(nll, data, pdf, init_pars, par_bounds, fixed_vals, **kwargs)
 
 
 def fixed_poi_fit(
