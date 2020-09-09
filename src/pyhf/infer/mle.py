@@ -3,9 +3,9 @@ from .. import get_backend
 from ..exceptions import UnspecifiedPOI
 
 
-def twice_nll(pars, data, pdf):
+def nll(pars, data, pdf):
     r"""
-    Two times the negative log-likelihood of the model parameters, :math:`\left(\mu, \boldsymbol{\theta}\right)`, given the observed data.
+    The negative log-likelihood of the model parameters, :math:`\left(\mu, \boldsymbol{\theta}\right)`, given the observed data.
     It is used in the calculation of the test statistic, :math:`t_{\mu}`, as defiend in Equation (8) in :xref:`arXiv:1007.1727`
 
     .. math::
@@ -30,10 +30,10 @@ def twice_nll(pars, data, pdf):
         >>> observations = [51, 48]
         >>> data = pyhf.tensorlib.astensor(observations + model.config.auxdata)
         >>> parameters = model.config.suggested_init()  # nominal parameters
-        >>> twice_nll = pyhf.infer.mle.twice_nll(parameters, data, model)
-        >>> twice_nll
-        array([30.77525435])
-        >>> -2 * model.logpdf(parameters, data) == twice_nll
+        >>> nll = pyhf.infer.mle.nll(parameters, data, model)
+        >>> nll
+        array([15.38762717])
+        >>> -1 * model.logpdf(parameters, data) == nll
         array([ True])
 
     Args:
@@ -42,9 +42,9 @@ def twice_nll(pars, data, pdf):
         pdf (~pyhf.pdf.Model): The statistical model adhering to the schema model.json
 
     Returns:
-        Tensor: Two times the negative log-likelihood, :math:`-2\ln L\left(\mu, \boldsymbol{\theta}\right)`
+        Tensor: The negative log-likelihood, :math:`-\ln L\left(\mu, \boldsymbol{\theta}\right)`
     """
-    return -2 * pdf.logpdf(pars, data)
+    return -pdf.logpdf(pars, data)
 
 
 def fit(data, pdf, init_pars=None, par_bounds=None, fixed_params=None, **kwargs):
