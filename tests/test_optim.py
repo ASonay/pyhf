@@ -73,7 +73,7 @@ def test_minimize(tensorlib, precision, optimizer, do_grad, do_stitch):
             # do grad, scipy, 32b
             'do_grad-scipy-pytorch-32b': [0.49999850, 1.00000131],
             'do_grad-scipy-tensorflow-32b': [0.49999896, 1.0000011],
-            'do_grad-scipy-jax-32b': [0.49999964, 1.0],
+            'do_grad-scipy-jax-32b': [0.5002691, 1.0001281],
             # do grad, scipy, 64b
             'do_grad-scipy-pytorch-64b': [0.499998588, 1.000001218],
             'do_grad-scipy-tensorflow-64b': [0.49999859, 1.00000122],
@@ -117,6 +117,8 @@ def test_minimize(tensorlib, precision, optimizer, do_grad, do_stitch):
             rtol = 7e-05
         if 'no_grad-minuit-jax-32b' in identifier:
             rtol = 4e-02
+        if 'do_grad-scipy-jax-32b' in identifier:
+            rtol = 1e-03
         if 'do_grad-minuit-jax-32b' in identifier:
             rtol = 5e-03
 
