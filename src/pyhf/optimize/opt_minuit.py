@@ -25,11 +25,11 @@ class minuit_optimizer(OptimizerMixin):
 
 
         Args:
-            errordef (`float`): See minuit docs. Default is 1.0.
+            errordef (`float`): See minuit docs. Default is 0.5.
             steps (`int`): Number of steps for the bounds. Default is 1000.
         """
         self.name = 'minuit'
-        self.errordef = kwargs.pop('errordef', 1)
+        self.errordef = kwargs.pop('errordef', 0.5)
         self.steps = kwargs.pop('steps', 1000)
         super().__init__(*args, **kwargs)
 
