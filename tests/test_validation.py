@@ -585,12 +585,12 @@ def validate_hypotest(pdf, data, mu_test, expected_result, tolerance=1e-6):
 
 @pytest.fixture(
     params=[
-        ('1bin_shapesys', {'init_pars': 2, 'par_bounds': 2}, 1e-6),
+        ('1bin_shapesys', {'init_pars': 2, 'par_bounds': 2}, 5e-5),
         ('1bin_lumi', {'init_pars': 2, 'par_bounds': 2}, 4e-6),
         ('1bin_normsys', {'init_pars': 2, 'par_bounds': 2}, 6e-6),
         ('2bin_histosys', {'init_pars': 2, 'par_bounds': 2}, 8e-5),
-        ('2bin_2channel', {'init_pars': 5, 'par_bounds': 5}, 2e-5),
-        ('2bin_2channel_couplednorm', {'init_pars': 2, 'par_bounds': 2}, 1e-6),
+        ('2bin_2channel', {'init_pars': 5, 'par_bounds': 5}, 5e-5),
+        ('2bin_2channel_couplednorm', {'init_pars': 2, 'par_bounds': 2}, 8e-5),
         (
             '2bin_2channel_coupledhistosys',
             {'auxdata': 1, 'init_pars': 2, 'par_bounds': 2},
